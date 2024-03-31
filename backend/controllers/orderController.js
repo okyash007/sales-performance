@@ -91,9 +91,7 @@ const getData = async (req, res) => {
         $limit: 1,
       },
     ]);
-    console.log("topCustomer:", topCustomer);
     const uniqueCategories = await orderDetailSchema.distinct("category");
-    console.log("uniqueCategories:", uniqueCategories);
     const uniqueYears = await orderDetailSchema.aggregate([
       {
         $group: {
@@ -104,7 +102,6 @@ const getData = async (req, res) => {
         $sort: { _id: 1 },
       },
     ]);
-    console.log("uniqueYears:", uniqueYears);
     const stateWiseAggregate = await orderDetailSchema.aggregate([
       {
         $group: {
@@ -119,7 +116,6 @@ const getData = async (req, res) => {
         $limit: 7,
       },
     ]);
-    console.log("stateWiseAggregate ", stateWiseAggregate);
     const totals = await orderDetailSchema.aggregate([
       {
         $group: {
@@ -127,17 +123,14 @@ const getData = async (req, res) => {
           totalOrders: { $sum: 1 },
           totalRevenue: { $sum: "$amount" },
           totalProfit: { $sum: "$profit" },
-          totalProducts: { $sum: "$quantity" },
         },
       },
     ]);
     const formattedStats = [
-      { label: "Total Revenue", value: `${totals[0].totalRevenue}` },
-      { label: "Total Profit", value: `${totals[0].totalProfit}` },
-      { label: "Total Product", value: `${totals[0].totalProducts}` },
+      { label: "Total Revenue", value: `₹ ${totals[0].totalRevenue}` },
+      { label: "Total Profit", value: `₹ ${totals[0].totalProfit}` },
       { label: "Total Orders", value: `${totals[0].totalOrders}` },
     ];
-    console.log("Formatted Stats:", totals);
     const Top_Costumer = [
       { label: "Top Costumer", value: `${topCustomer[0]._id}` },
     ];

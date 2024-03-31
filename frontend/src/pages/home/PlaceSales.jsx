@@ -2,9 +2,8 @@ import React from "react";
 import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 const PlaceSales = ({ data }) => {
-  console.log(data);
   return (
-    <div className="bg-[#ffffff1a] flex-grow p-5 rounded-lg">
+    <div className="bg-[#ffffff1a] p-5 flex-grow rounded-lg min-w-[20rem]">
       <ResponsiveContainer width="100%" height={400}>
         <PieChart>
           <Pie
