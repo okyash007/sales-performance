@@ -10,8 +10,6 @@ import SalesCompare from "./SalesCompare";
 const Home = () => {
   const [allData, setAllData] = useState(null);
 
-  console.log(allData);
-
   async function getData() {
     const res = await makeGetRequest(`${backendUrl}/order`);
     setAllData(res);
@@ -27,7 +25,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="px-2 pt-16 flex flex-wrap gap-2">
+      <div className="px-2 pt-20 flex flex-wrap gap-2">
         {allData.stats.map((m) => (
           <StatsCard key={m.label} info={m} />
         ))}
@@ -40,6 +38,7 @@ const Home = () => {
       <div className="p-2">
         <YearlySales uniqueYears={allData.uniqueYears} />
       </div>
+
     </>
   );
 };

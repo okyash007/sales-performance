@@ -7,11 +7,8 @@ const SalesCompare = () => {
   const [mothSales, setMonthSales] = useState(null);
   const presentData = new Date();
 
-  console.log(presentData.getMonth());
-
   async function getOrdersYearly() {
     const res = await makeGetRequest(`${backendUrl}/order/yearWise?year=2023`);
-    console.log(res);
     setMonthSales(res.yAxisData[0]);
   }
 
