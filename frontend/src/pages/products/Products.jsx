@@ -18,14 +18,12 @@ const Products = () => {
     return <div>Loading...</div>;
   }
 
+
   return (
     <>
       <div className="pt-20 px-2 flex flex-wrap gap-2">
         {products.map((m) => (
-          <div
-            className="bg-[#ffffff1a] rounded-lg p-5 w-max"
-            key={m._id}
-          >
+          <div className="bg-[#ffffff1a] rounded-lg p-5 w-max" key={m.id}>
             <h1 className="text-2xl">{m.name}</h1>
             <p>cost - {m.cost_price}</p>
             <p>selling price - {m.cost_price}</p>

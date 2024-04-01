@@ -8,7 +8,7 @@ const SalesCompare = () => {
   const presentData = new Date();
 
   async function getOrdersYearly() {
-    const res = await makeGetRequest(`${backendUrl}/order/yearWise?year=2023`);
+    const res = await makeGetRequest(`${backendUrl}/order/yearWise?year=2024`);
     setMonthSales(res.yAxisData[0]);
   }
 
